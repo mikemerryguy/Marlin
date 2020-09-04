@@ -2995,22 +2995,27 @@
   #define USER_GCODE_3 "G28 \n M48 P20" // shows nozzle-to-probe offset values
 #endif
 
-  #define USER_DESC_4 "Disable Cold Extrusion"
-  #define USER_GCODE_4 "M302 P1" // shows nozzle-to-probe offset values
+  #define USER_DESC_4 "Allow Cold Extrusion"
+  #define USER_GCODE_4 "M302 P1" // Allows Extruder to move with no nozzle temmp checks.
 
-  #define USER_DESC_5 "Enable Cold Extrusion"
-  #define USER_GCODE_5 "M302 P0" // shows nozzle-to-probe offset values
+  #define USER_DESC_5 "Deny Cold Extrusion"
+  #define USER_GCODE_5 "M302 P0" // Before Extruder will move will check mintemp of nozzle set in firmware
+
+ #define USER_DESC_6 "Free Air Esteps" // Added by mike_merryguy, will guide you to calculate esteps
+// it will have you remove bowden from extruder motor, cut filament flush, extract 100 mm wait for you to measure, retract 100 mm and reset saftey features
+//you still need to know the formula to change value in your settings and save to eeprom !
+  #define USER_GCODE_6 "M117 Homeing \nG28\nM201 E5000\nM203 E50\nM204 P500.00 R1000.00 T500.0\nM205 E5.00\nM220 S100\nM221 S100\nG92 E0\nM0 Remove Bowden From E Motor Arm.\nM0 Cut Filemant Flush With Arm\nM302 P1\nM0 Allowing E without Heat\nM117 Extruding 100mm\nG1 F1500 E100\nM0 Measure/Record Length\nM117 Retracting 100mm\nG1 F1500 E0\nM302 P0\nM0 Enter & Save - Repeat or Done!"
 
  
-  /*#define USER_DESC_6 "Preheat for " PREHEAT_2_LABEL
-  #define USER_GCODE_6 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
+  /*#define USER_DESC_7 "Preheat for " PREHEAT_2_LABEL
+  #define USER_GCODE_7 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nM104 S" STRINGIFY(PREHEAT_2_TEMP_HOTEND)
   
   unused custom user menus below. Add in your own if you want.
-  #define USER_DESC_7 "Heat Bed/Home/Level"
-  #define USER_GCODE_7 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
+  #define USER_DESC_8 "Heat Bed/Home/Level"
+  #define USER_GCODE_8 "M140 S" STRINGIFY(PREHEAT_2_TEMP_BED) "\nG28\nG29"
 
-  #define USER_DESC_8 "Home & Info"
-  #define USER_GCODE_8 "G28\nM503"*/
+  #define USER_DESC_9 "Home & Info"
+  #define USER_GCODE_9 "G28\nM503"*/
 #endif
 
 
